@@ -136,17 +136,25 @@ p{margin:0}
 @keyframes slide{to{transform:translateX(-50%)}}
 
 /* ---------- Mission (parchment chapter) ---------- */
-.mission{background:var(--paper);color:var(--ink);padding:clamp(80px,12vw,160px) 0}
-.mission .eyebrow{color:var(--purple)}
+.mission{position:relative;overflow:hidden;isolation:isolate;background:var(--ink);color:var(--paper);padding:clamp(90px,13vw,180px) 0}
+.mission-bg{position:absolute;inset:0 0 0 38%;z-index:-2;margin:0}
+@media (max-width:760px){.mission-bg{left:0}}
+.mission-bg img{width:100%;height:100%;object-fit:cover;object-position:45% 20%;filter:saturate(.85)}
+@supports (animation-timeline: view()){
+  .mission-bg img{animation:sceneZoom linear both;animation-timeline:view();animation-range:entry 0% exit 100%}
+}
+.mission::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--ink) 0%,var(--ink) 38%,rgba(29,15,48,.55) 56%,rgba(29,15,48,.15) 100%),linear-gradient(0deg,rgba(29,15,48,.7),transparent 35%)}
+@media (max-width:760px){.mission::after{background:linear-gradient(0deg,rgba(29,15,48,.92),rgba(29,15,48,.72))}}
+.mission .eyebrow{color:var(--brass)}
 .mission blockquote{margin:28px 0 0;font-family:var(--display);font-weight:500;font-size:var(--step-3);line-height:1.08;letter-spacing:-.01em;max-width:20ch}
-.mission .w{color:color-mix(in srgb,var(--ink) 22%,var(--paper));transition:color .5s}
-.mission .w.lit{color:var(--ink)}
+.mission .w{color:rgba(251,248,242,.3);transition:color .5s}
+.mission .w.lit{color:var(--paper)}
 .mission .key{font-style:italic;position:relative}
-.mission .key.lit{color:var(--purple)}
+.mission .key.lit{color:var(--brass)}
 .mission .key::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.06em;background:var(--brass);transform:scaleX(0);transform-origin:left;transition:transform .8s .2s cubic-bezier(.2,.8,.2,1)}
 .mission .key.lit::after{transform:scaleX(1)}
 .mission .sig{margin-top:44px;display:flex;align-items:center;gap:16px;font-size:var(--step--1);letter-spacing:.18em;text-transform:uppercase;font-weight:600}
-.mission .sig::before{content:"";width:60px;height:1px;background:var(--ink)}
+.mission .sig::before{content:"";width:60px;height:1px;background:var(--brass)}
 
 /* ---------- About ---------- */
 section{position:relative}
@@ -415,6 +423,7 @@ footer .mark .logo{height:46px}
 
   <!-- MISSION -->
   <section class="mission" aria-labelledby="mission-title">
+    <figure class="mission-bg" aria-hidden="true"><img src="images/dr-heder-worship.jpg" alt="" width="1024" height="843" loading="lazy"></figure>
     <div class="wrap">
       <p class="eyebrow" id="mission-title">Life mission</p>
       <blockquote id="missionQuote">Cultivating men and women capable of transforming <span class="key">families,</span> <span class="key">institutions,</span> and <span class="key">nations.</span></blockquote>
