@@ -232,6 +232,7 @@ section{position:relative}
 .book3d::after{content:"";position:absolute;left:8%;right:4%;bottom:-26px;height:22px;background:radial-gradient(closest-side,rgba(12,19,34,.28),transparent);filter:blur(4px)}
 .flip-row{display:flex;justify-content:center;margin-top:44px}
 .author .flip-row .btn.ghost{padding:10px 18px;font-size:.84rem}
+@media (max-width:370px){.cta .btn svg{display:none}.cta .btn{padding:12px 10px;font-size:.8rem}}
 @media (prefers-reduced-motion:reduce){.book3d .inner{transform:none}.book3d.flipped .inner{transform:rotateY(180deg)}}
 .author .shelf-note{max-width:none;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;text-align:center;margin-top:14px;color:#6a6f7d}
 
@@ -317,6 +318,8 @@ footer .mark .dia{transform:scale(.82);transform-origin:left center;margin-right
   .nav .btn{display:none}
 }
 @media (max-width:560px){
+  .cta{flex-wrap:nowrap;gap:10px}
+  .cta .btn{flex:1 1 auto;justify-content:center;white-space:nowrap;padding:13px 14px;font-size:.86rem;gap:8px}
   .grid4{grid-template-columns:1fr}
   .pillar{min-height:260px}
   form{grid-template-columns:1fr}
