@@ -139,9 +139,9 @@ p{margin:0}
 .mission{position:relative;overflow:hidden;isolation:isolate;background:var(--ink);color:var(--paper);padding:clamp(90px,13vw,180px) 0}
 .mission-bg{position:absolute;inset:0 0 0 38%;z-index:-2;margin:0}
 @media (max-width:760px){.mission-bg{left:0}}
-.mission-bg img{width:100%;height:100%;object-fit:cover;object-position:45% 20%;filter:saturate(.85)}
+.mission-bg video{display:block;width:100%;height:100%;object-fit:cover;object-position:62% 40%}
 @supports (animation-timeline: view()){
-  .mission-bg img{animation:sceneZoom linear both;animation-timeline:view();animation-range:entry 0% exit 100%}
+  .mission-bg video{animation:sceneZoom linear both;animation-timeline:view();animation-range:entry 0% exit 100%}
 }
 .mission::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--ink) 0%,var(--ink) 38%,rgba(29,15,48,.55) 56%,rgba(29,15,48,.15) 100%),linear-gradient(0deg,rgba(29,15,48,.7),transparent 35%)}
 @media (max-width:760px){.mission::after{background:linear-gradient(0deg,rgba(29,15,48,.92),rgba(29,15,48,.72))}}
@@ -423,7 +423,7 @@ footer .mark .logo{height:46px}
 
   <!-- MISSION -->
   <section class="mission" aria-labelledby="mission-title">
-    <figure class="mission-bg" aria-hidden="true"><img src="images/dr-heder-worship.jpg" alt="" width="1024" height="843" loading="lazy"></figure>
+    <figure class="mission-bg" aria-hidden="true"><video src="videos/mission.mp4" poster="images/mission-poster.jpg" autoplay muted loop playsinline preload="metadata"></video></figure>
     <div class="wrap">
       <p class="eyebrow" id="mission-title">Life mission</p>
       <blockquote id="missionQuote">Cultivating men and women capable of transforming <span class="key">families,</span> <span class="key">institutions,</span> and <span class="key">nations.</span></blockquote>
@@ -791,6 +791,9 @@ footer .mark .logo{height:46px}
       try { navigator.clipboard.writeText(v).then(function(){ done(true); }, function(){ done(false); }); } catch(e){ done(false); }
     });
   });
+
+  // Respect reduced motion for the background video
+  if(reduce){ document.querySelectorAll('.mission-bg video').forEach(function(v){ v.removeAttribute('autoplay'); try{ v.pause(); }catch(e){} }); }
 
   // Ambient gold dust in hero
   var cv = document.getElementById('dust'); if(!cv || reduce) return;
