@@ -245,9 +245,11 @@ section{position:relative}
 
 /* ---------- Contact ---------- */
 .contact{padding:clamp(80px,10vw,130px) 0;background:var(--ink-2);border-top:1px solid var(--line)}
-.contact .split{grid-template-columns:.9fr 1.1fr}
-.contact h2{font-size:var(--step-3);margin:16px 0 22px}
-.contact .side p{color:var(--muted);max-width:42ch}
+.contact .split{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);align-items:start}
+.contact .main form{margin-top:34px}
+.reasons-label{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:-14px}
+.contact h2{font-size:var(--step-3);margin:16px 0 18px;max-width:18ch}
+.contact .main > p.rv{color:var(--muted);max-width:52ch}
 .reasons{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
 .reasons span{border:1px solid var(--line);padding:8px 14px;border-radius:999px;font-size:.84rem;color:var(--paper)}
 form{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-self:start;align-content:start}
@@ -627,9 +629,7 @@ footer .mark .logo{height:46px}
       <div class="split">
         <div class="side">
           <figure class="contact-photo rv"><img src="images/dr-heder-thinker.jpg" alt="Dr. Héder preaching, microphone in hand, pointing to his temple" width="636" height="549" loading="lazy"></figure>
-          <p class="eyebrow rv">Invitations</p>
-          <h2 id="contact-title" class="rv">Bring Dr. Héder to your people.</h2>
-          <p class="rv">For speaking engagements, leadership training, conferences, partnerships and media requests, send a note and his office will respond.</p>
+          <p class="reasons-label rv">He speaks at</p>
           <div class="reasons rv">
             <span>Conferences</span><span>Church services</span><span>Leadership institutes</span><span>Universities</span><span>Media</span>
           </div>
@@ -641,22 +641,27 @@ footer .mark .logo{height:46px}
           </div>
           </div>
         </div>
-        <form id="contactForm" class="rv" novalidate>
-          <!-- To go live: set the Web3Forms access key below (same setup as other Idea 2 Visual sites). -->
-          <input type="hidden" name="access_key" value="">
-          <input type="hidden" name="subject" value="New invitation request: Dr. Jean Héder Petit-Frère website">
-          <div class="field"><label for="f-name">Full name</label><input id="f-name" name="name" autocomplete="name" required></div>
-          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
-          <div class="field"><label for="f-org">Organization</label><input id="f-org" name="organization" autocomplete="organization"></div>
-          <div class="field"><label for="f-type">Request type</label>
-            <select id="f-type" name="request_type">
-              <option>Speaking engagement</option><option>Leadership training</option><option>Conference</option><option>Partnership</option><option>Media / interview</option><option>Books</option><option>Other</option>
-            </select></div>
-          <div class="field full"><label for="f-msg">Message</label><textarea id="f-msg" name="message" required placeholder="Event, date, location and audience"></textarea></div>
-          <div class="field full" style="display:flex;justify-content:flex-start"><button type="submit" class="btn solid">Send request
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></button></div>
-          <p class="form-status" id="formStatus" role="status"></p>
-        </form>
+        <div class="main">
+          <p class="eyebrow rv">Invitations</p>
+          <h2 id="contact-title" class="rv">Bring Dr. Héder to your people.</h2>
+          <p class="rv">For speaking engagements, leadership training, conferences, partnerships and media requests, send a note and his office will respond.</p>
+          <form id="contactForm" class="rv" novalidate>
+            <!-- To go live: set the Web3Forms access key below (same setup as other Idea 2 Visual sites). -->
+            <input type="hidden" name="access_key" value="">
+            <input type="hidden" name="subject" value="New invitation request: Dr. Jean Héder Petit-Frère website">
+            <div class="field"><label for="f-name">Full name</label><input id="f-name" name="name" autocomplete="name" required></div>
+            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="f-org">Organization</label><input id="f-org" name="organization" autocomplete="organization"></div>
+            <div class="field"><label for="f-type">Request type</label>
+              <select id="f-type" name="request_type">
+                <option>Speaking engagement</option><option>Leadership training</option><option>Conference</option><option>Partnership</option><option>Media / interview</option><option>Books</option><option>Other</option>
+              </select></div>
+            <div class="field full"><label for="f-msg">Message</label><textarea id="f-msg" name="message" required placeholder="Event, date, location and audience"></textarea></div>
+            <div class="field full" style="display:flex;justify-content:flex-start"><button type="submit" class="btn solid">Send request
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></button></div>
+            <p class="form-status" id="formStatus" role="status"></p>
+          </form>
+        </div>
       </div>
     </div>
   </section>
