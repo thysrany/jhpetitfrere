@@ -296,14 +296,23 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--brass)}
 
 /* Give */
 .give{padding:clamp(80px,10vw,130px) 0}
-.give-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.gift{border:1px solid var(--line);border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;gap:6px;background:var(--ink-2);transition:border-color .3s,transform .4s cubic-bezier(.2,.8,.2,1)}
-.gift:hover{border-color:var(--brass);transform:translateY(-4px)}
-.gift .region{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600}
-.gift h3{font-size:var(--step-1);margin:4px 0 2px}
-.gift .handle{font-variant-numeric:tabular-nums;font-size:1.05rem;color:var(--brass);word-break:break-all;margin-bottom:16px}
-.gift .act{margin-top:auto;align-self:flex-start;padding:10px 18px;font-size:.84rem}
-.give-note{margin-top:26px;color:var(--muted);font-size:.9rem;max-width:70ch}
+.give-layout{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(30px,6vw,90px);align-items:center}
+.give-intro h2{font-size:var(--step-3);margin:16px 0 18px}
+.give-intro p:last-child{color:var(--muted);max-width:44ch}
+.give-box{background:var(--ink-2);border:1px solid var(--line);border-radius:18px;padding:10px 10px 18px}
+.give-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--ink);border-radius:12px;padding:4px}
+.give-tabs button{font:600 .86rem var(--body);letter-spacing:.02em;color:var(--muted);background:transparent;border:0;border-radius:9px;padding:11px 6px;cursor:pointer;transition:background .3s,color .3s}
+.give-tabs button:hover{color:var(--paper)}
+.give-tabs button[aria-selected="true"]{background:var(--brass);color:var(--ink)}
+.give-panel{list-style:none;margin:6px 0 0;padding:0 8px}
+.js .give-panel[hidden]{display:none}
+.give-row{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"name act" "handle act";column-gap:16px;align-items:center;padding:16px 4px;border-bottom:1px solid var(--line)}
+.give-row:last-child{border-bottom:0}
+.give-row .gname{grid-area:name;font-family:var(--display);font-weight:600;font-size:1.15rem}
+.give-row .handle{grid-area:handle;color:var(--brass);font-variant-numeric:tabular-nums;font-size:.95rem;overflow-wrap:anywhere}
+.give-row .act{grid-area:act;padding:10px 20px;font-size:.84rem;min-width:84px;justify-content:center}
+.give-note{margin:10px 12px 0;color:var(--muted);font-size:.84rem;line-height:1.5}
+@media (max-width:860px){.give-layout{grid-template-columns:1fr}}
 
 /* Social */
 .social{display:flex;gap:12px;flex-wrap:wrap}
@@ -598,44 +607,32 @@ footer .mark .logo{height:46px}
 
   <!-- GIVE -->
   <section class="give" id="give" aria-labelledby="give-title">
-    <div class="wrap">
-      <div class="head">
-        <div class="rv"><p class="eyebrow">Support the mission</p><h2 id="give-title">Give to the work.</h2></div>
-        <p class="rv">Your gift supports the teaching, leadership formation and humanitarian work of Dr. Héder's ministry, in North America and in Haiti.</p>
+    <div class="wrap give-layout">
+      <div class="give-intro rv">
+        <p class="eyebrow">Support the mission</p>
+        <h2 id="give-title">Give to the work.</h2>
+        <p>Your gift supports the teaching, leadership formation and humanitarian work of Dr. Héder's ministry, in North America and in Haiti.</p>
       </div>
-      <div class="give-grid">
-        <article class="gift rv">
-          <span class="region">United States &amp; worldwide</span>
-          <h3>PayPal</h3>
-          <span class="handle">@pasteurheder</span>
-          <a class="btn solid act" href="https://www.paypal.com/paypalme/pasteurheder" target="_blank" rel="noopener">Give with PayPal</a>
-        </article>
-        <article class="gift rv">
-          <span class="region">United States</span>
-          <h3>Cash App</h3>
-          <span class="handle">$pastorheder</span>
-          <a class="btn solid act" href="https://cash.app/$pastorheder" target="_blank" rel="noopener">Give with Cash App</a>
-        </article>
-        <article class="gift rv">
-          <span class="region">Canada</span>
-          <h3>Interac e-Transfer</h3>
-          <span class="handle">gocdftl@gmail.com</span>
-          <button type="button" class="btn ghost act" data-copy="gocdftl@gmail.com" aria-label="Copy Interac email">Copy</button>
-        </article>
-        <article class="gift rv">
-          <span class="region">Haiti</span>
-          <h3>MonCash</h3>
-          <span class="handle">3454-0717</span>
-          <button type="button" class="btn ghost act" data-copy="34540717" aria-label="Copy MonCash number">Copy</button>
-        </article>
-        <article class="gift rv">
-          <span class="region">Haiti</span>
-          <h3>NatCash</h3>
-          <span class="handle">5520-9428</span>
-          <button type="button" class="btn ghost act" data-copy="55209428" aria-label="Copy NatCash number">Copy</button>
-        </article>
+      <div class="give-box rv">
+        <div class="give-tabs" role="tablist" aria-label="Where are you giving from?">
+          <button type="button" role="tab" id="tab-us" aria-controls="give-us" aria-selected="true">United States</button>
+          <button type="button" role="tab" id="tab-ca" aria-controls="give-ca" aria-selected="false" tabindex="-1">Canada</button>
+          <button type="button" role="tab" id="tab-ht" aria-controls="give-ht" aria-selected="false" tabindex="-1">Haïti</button>
+        </div>
+        <ul class="give-panel" id="give-us" role="tabpanel" aria-labelledby="tab-us">
+            <li class="give-row"><span class="gname">PayPal</span><span class="handle">@pasteurheder</span><a class="btn solid act" href="https://www.paypal.com/paypalme/pasteurheder" target="_blank" rel="noopener" aria-label="Give with PayPal">Give</a></li>
+            <li class="give-row"><span class="gname">Cash App</span><span class="handle">$pastorheder</span><a class="btn solid act" href="https://cash.app/$pastorheder" target="_blank" rel="noopener" aria-label="Give with Cash App">Give</a></li>
+        </ul>
+        <ul class="give-panel" id="give-ca" role="tabpanel" aria-labelledby="tab-ca">
+            <li class="give-row"><span class="gname">Interac e-Transfer</span><span class="handle">gocdftl@gmail.com</span><button type="button" class="btn ghost act" data-copy="gocdftl@gmail.com" aria-label="Copy Interac email">Copy</button></li>
+            <li class="give-row"><span class="gname">PayPal</span><span class="handle">@pasteurheder</span><a class="btn solid act" href="https://www.paypal.com/paypalme/pasteurheder" target="_blank" rel="noopener" aria-label="Give with PayPal">Give</a></li>
+        </ul>
+        <ul class="give-panel" id="give-ht" role="tabpanel" aria-labelledby="tab-ht">
+            <li class="give-row"><span class="gname">MonCash</span><span class="handle">3454-0717</span><button type="button" class="btn ghost act" data-copy="34540717" aria-label="Copy MonCash number">Copy</button></li>
+            <li class="give-row"><span class="gname">NatCash</span><span class="handle">5520-9428</span><button type="button" class="btn ghost act" data-copy="55209428" aria-label="Copy NatCash number">Copy</button></li>
+        </ul>
+        <p class="give-note" id="copyStatus" role="status">PayPal works from anywhere. For Interac, MonCash and NatCash, copy the address or number and send from your bank or mobile money app.</p>
       </div>
-      <p class="give-note rv" id="copyStatus" role="status">For Interac, MonCash and NatCash, copy the address or number and send from your banking or mobile money app.</p>
     </div>
   </section>
 
@@ -787,6 +784,21 @@ footer .mark .logo{height:46px}
     var on = book.classList.toggle('flipped'); flip.setAttribute('aria-pressed', on);
     flip.textContent = on ? 'See the front cover' : 'See the back cover';
   });
+
+  // Giving tabs
+  var tabs = Array.from(document.querySelectorAll('.give-tabs [role="tab"]'));
+  function pick(t, focus){
+    tabs.forEach(function(x){ var on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1;
+      document.getElementById(x.getAttribute('aria-controls')).hidden = !on; });
+    if(focus) t.focus();
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ pick(t); });
+    t.addEventListener('keydown', function(e){
+      if(e.key === 'ArrowRight' || e.key === 'ArrowLeft'){ e.preventDefault(); pick(tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length], true); }
+    });
+  });
+  if(tabs.length) pick(tabs[0]);
 
   // Copy buttons for giving details
   var copyStatus = document.getElementById('copyStatus');
