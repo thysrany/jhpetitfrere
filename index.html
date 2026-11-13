@@ -350,6 +350,9 @@ footer .mark .logo{height:46px}
   .nav .btn{display:none}
 }
 @media (max-width:560px){
+  .author .btns{flex-wrap:nowrap;gap:10px}
+  .author .btns .btn{flex:1 1 auto;justify-content:center;white-space:nowrap;padding:13px 14px;font-size:.86rem;gap:8px}
+  .author .btns .long{display:none}
   .hero h1{font-size:clamp(2.2rem,11.5vw,3rem)}
   .hero h1 .line:nth-child(-n+2){display:inline-block}
   .mark span{white-space:nowrap;font-size:.68rem;letter-spacing:.14em}
@@ -574,7 +577,7 @@ footer .mark .logo{height:46px}
             <div class="btns">
               <a href="https://www.amazon.com/dp/1734691468" class="btn solid" target="_blank" rel="noopener">Buy on Amazon
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></a>
-              <a href="#contact" class="btn ghost">Bulk orders and signings</a>
+              <a href="#contact" class="btn ghost">Bulk orders<span class="long">&nbsp;and signings</span></a>
             </div>
           </article>
         </div>
