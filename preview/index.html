@@ -116,11 +116,11 @@ p{margin:0}
 @keyframes archIn{from{clip-path:inset(100% 0 0 0 round 999px 999px 14px 14px)}to{clip-path:inset(0 0 0 0 round 999px 999px 14px 14px)}}
 @keyframes settle{to{transform:scale(1)}}
 .arch-line{position:absolute;inset:-16px;border:1px solid color-mix(in srgb,var(--brass) 55%,transparent);border-radius:999px 999px 20px 20px;pointer-events:none;animation:fadeUp 1.2s 1.2s ease both}
-.ring{position:absolute;width:150px;height:150px;left:-58px;bottom:70px;animation:fadeUp 1s 1.6s ease both}
-.ring svg{width:100%;height:100%;animation:spin 28s linear infinite}
-.ring text{font:600 10.4px var(--body);letter-spacing:3.1px;fill:var(--paper);text-transform:uppercase}
-.ring .core{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-style:italic;font-weight:600;letter-spacing:-.02em;font-size:1.45rem;color:var(--brass)}
-.ring .core img{width:64px;height:auto}
+.ring{position:absolute;width:184px;height:184px;left:-72px;bottom:56px;animation:fadeUp 1s 1.6s ease both}
+.ring svg{position:relative;z-index:1;width:100%;height:100%;animation:spin 28s linear infinite}
+.ring text{font:600 9.8px var(--body);letter-spacing:1.6px;fill:var(--paper);text-transform:uppercase}
+.ring .core{position:absolute;inset:0;z-index:1;display:grid;place-items:center;font-family:var(--display);font-style:italic;font-weight:600;letter-spacing:-.02em;font-size:1.45rem;color:var(--brass)}
+.ring .core img{width:50%;height:auto;transform:translateY(2px)}
 .ring::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--ink);box-shadow:0 0 0 1px var(--line)}
 @keyframes spin{to{transform:rotate(360deg)}}
 .caption{position:absolute;right:-6px;bottom:28px;background:var(--paper);color:var(--ink);padding:12px 18px;border-radius:4px;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;animation:fadeUp 1s 1.9s ease both}
@@ -363,8 +363,8 @@ footer .mark .logo{height:46px}
   .grid4{grid-template-columns:1fr}
   .pillar{min-height:260px}
   form{grid-template-columns:1fr}
-  .ring{width:112px;height:112px;left:-24px;bottom:40px}
-  .ring text{font-size:9.6px}
+  .ring{width:132px;height:132px;left:-26px;bottom:96px}
+  .ring text{font-size:9.6px;letter-spacing:1.4px}
   .caption{right:-4px;font-size:.68rem}
 }
 @media (prefers-reduced-motion:reduce){
@@ -422,9 +422,9 @@ footer .mark .logo{height:46px}
         <div class="ring" aria-hidden="true">
           <svg viewBox="0 0 150 150">
             <defs><path id="circ" d="M75,75 m-58,0 a58,58 0 1,1 116,0 a58,58 0 1,1 -116,0"/></defs>
-            <text><textPath href="#circ">Transforming lives · Building the kingdom ·</textPath></text>
+            <text textLength="358" lengthAdjust="spacing"><textPath href="#circ" textLength="358" lengthAdjust="spacing">Transforming lives · Building the kingdom ·</textPath></text>
           </svg>
-          <span class="core"><img src="../images/crown-gold.png" alt="" width="64" height="31"></span>
+          <span class="core"><img src="../images/logo-lockup-reverse.png" alt="" width="167" height="160"></span>
         </div>
         <figcaption class="caption">Teacher · Author · Leader</figcaption>
       </figure>
